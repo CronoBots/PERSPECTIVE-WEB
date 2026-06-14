@@ -43,6 +43,7 @@
 </head>
 <body>
   <a href="#main" class="skip-link">Aller au contenu</a>
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header" id="top">
     <nav class="nav container" aria-label="Navigation principale">
@@ -164,7 +165,35 @@
       <div class="container">
         <p class="eyebrow center" data-reveal>La différence</p>
         <h2 class="section-title" data-reveal>Avant / après Perspective Web</h2>
-        <p class="section-subtitle" data-reveal>Une page Facebook ou un vieux site, ça ne suffit plus. Voilà ce qui change.</p>
+        <p class="section-subtitle" data-reveal>Glissez le curseur&nbsp;: à gauche un site daté, à droite ce qu'on vous livre.</p>
+
+        <div class="ba" data-ba data-reveal style="--pos:50%">
+          <div class="ba-stage">
+            <div class="ba-panel ba-after">
+              <div class="ba-mock ba-mock-new">
+                <div class="m-top"><span class="m-name">Chez Marie</span><span class="m-open">● Ouvert</span></div>
+                <div class="m-hero">Le meilleur de votre commerce, en ligne</div>
+                <div class="m-chips"><span>📞 Appeler</span><span>📍 Itinéraire</span></div>
+                <div class="m-card">⭐ 4,8 · 126 avis Google</div>
+                <div class="m-rows"><span></span><span></span></div>
+              </div>
+              <span class="ba-badge ba-badge-after">Après</span>
+            </div>
+            <div class="ba-panel ba-before">
+              <div class="ba-mock ba-mock-old">
+                <div class="o-bar">www.mon-vieux-site.be</div>
+                <div class="o-title">Bienvenue sur notre site</div>
+                <div class="o-img">🖼️</div>
+                <div class="o-text">Pour nous contacter, cliquez ici.<br />Site optimisé pour Internet Explorer.</div>
+                <div class="o-warn">⚠ Non adapté au mobile</div>
+              </div>
+              <span class="ba-badge ba-badge-before">Avant</span>
+            </div>
+            <div class="ba-divider" aria-hidden="true"><span class="ba-knob">⇆</span></div>
+          </div>
+          <input type="range" min="0" max="100" value="50" step="0.1" class="ba-range" aria-label="Comparer avant et après" />
+        </div>
+
         <div class="compare-grid">
           <article class="compare-card compare-before" data-reveal>
             <header><span class="compare-tag">Avant</span><h3>Difficile à trouver</h3></header>

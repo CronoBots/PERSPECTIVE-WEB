@@ -7,15 +7,22 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // En-tête : ombre au scroll + bouton retour en haut
+  // En-tête : ombre au scroll + bouton retour en haut + barre de progression
   const header = document.querySelector(".site-header");
   const toTop = document.getElementById("to-top");
+  const progress = document.getElementById("scroll-progress");
   function onScroll() {
     const y = window.scrollY;
     if (header) header.classList.toggle("scrolled", y > 8);
     if (toTop) toTop.classList.toggle("show", y > 600);
+    if (progress) {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      progress.style.width = (max > 0 ? (y / max) * 100 : 0) + "%";
+    }
   }
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll, { passive: true });
   onScroll();
 
   if (toTop) {
@@ -150,6 +157,34 @@
       message.textContent = `Merci ${name} ! On prépare votre maquette et on vous écrit à ${email}.`;
       message.classList.add("success");
       form.reset();
+    });
+  }
+
+  // Comparateur avant / après (glissable, clavier-accessible)
+  document.querySelectorAll("[data-ba]").forEach((ba) => {
+    const range = ba.querySelector(".ba-range");
+    if (!range) return;
+    const update = () => ba.style.setProperty("--pos", range.value + "%");
+    range.addEventListener("input", update);
+    update();
+  });
+
+  // Inclinaison 3D des cartes (pointeur précis uniquement, hors reduced-motion)
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (finePointer && !prefersReduced) {
+    document.querySelectorAll(".feature-card, .plan:not(.plan-featured), .step").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5;
+        const py = (e.clientY - r.top) / r.height - 0.5;
+        card.classList.add("is-tilting");
+        card.style.transform =
+          "perspective(900px) rotateY(" + px * 5 + "deg) rotateX(" + -py * 5 + "deg) translateY(-6px)";
+      });
+      card.addEventListener("pointerleave", () => {
+        card.classList.remove("is-tilting");
+        card.style.transform = "";
+      });
     });
   }
 })();
