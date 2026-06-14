@@ -335,8 +335,13 @@ a { color: inherit; text-decoration: none; }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .hero-grid, .example-grid, .compare-grid { grid-template-columns: 1fr; }
-  .hero-visual { min-height: 380px; order: -1; }
+  .hero { padding-top: 32px; }
+  .hero-grid, .example-grid, .compare-grid { grid-template-columns: 1fr; gap: 36px; }
+  .hero-content { text-align: center; }
+  .hero-content .lead { margin-left: auto; margin-right: auto; }
+  .hero-actions, .hero-stats { justify-content: center; }
+  .hero-stats li { align-items: center; text-align: center; }
+  .hero-visual { min-height: 360px; }
   .feature-grid, .steps, .pricing-grid { grid-template-columns: 1fr; }
   .plan-featured { transform: none; }
   .footer-grid { grid-template-columns: 1fr; }
