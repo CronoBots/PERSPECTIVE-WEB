@@ -31,13 +31,15 @@ jobs:
         with:
           enablement: true
 
-      - name: Cache-busting des assets
+      - name: Cache-busting et version
         run: |
           VER="${GITHUB_SHA::8}"
+          BUILD="$(date -u '+%d/%m/%Y %H:%M') UTC · ${VER}"
           echo "Version des assets : $VER"
           sed -i -E "s/(href|src)=\"(styles\.css|script\.js|favicon\.svg)\"/\1=\"\2?v=$VER\"/g" index.html
-          echo "Références après injection :"
-          grep -E "styles\.css|script\.js|favicon\.svg" index.html
+          sed -i "s|__BUILD__|${BUILD}|g" index.html
+          echo "Version injectée : ${BUILD}"
+          grep -E "styles\.css|script\.js|favicon\.svg|Version en ligne" index.html
 
       - name: Uploader le site
         uses: actions/upload-pages-artifact@v3
