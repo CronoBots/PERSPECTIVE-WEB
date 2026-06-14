@@ -31,6 +31,14 @@ jobs:
         with:
           enablement: true
 
+      - name: Cache-busting des assets
+        run: |
+          VER="${GITHUB_SHA::8}"
+          echo "Version des assets : $VER"
+          sed -i -E "s/(href|src)=\"(styles\.css|script\.js|favicon\.svg)\"/\1=\"\2?v=$VER\"/g" index.html
+          echo "Références après injection :"
+          grep -E "styles\.css|script\.js|favicon\.svg" index.html
+
       - name: Uploader le site
         uses: actions/upload-pages-artifact@v3
         with:
