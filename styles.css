@@ -264,16 +264,13 @@ a { color: inherit; text-decoration: none; }
 .example-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
 .example-text .section-title { text-align: left; margin: 0 0 0.5rem; max-width: none; }
 .example-text .lead { margin-bottom: 1.6rem; }
-.browser { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.browser { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: border-color 0.2s var(--ease), transform 0.3s var(--ease); }
+a.browser:hover { border-color: var(--primary); transform: translateY(-4px); }
 .browser-bar { display: flex; align-items: center; gap: 8px; padding: 13px 14px; background: var(--bg-soft); border-bottom: 1px solid var(--border-soft); }
 .browser-dot { width: 11px; height: 11px; border-radius: 50%; background: #2c4a72; }
 .browser-url { margin-left: 10px; font-size: 0.78rem; color: var(--text-muted); background: var(--bg); padding: 6px 13px; border-radius: 999px; flex: 1; }
-.browser-body { padding: 26px; }
-.browser-hero { background: linear-gradient(120deg, #b91c1c, #ef4444); color: #fff; font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; padding: 30px 20px; border-radius: 12px; margin-bottom: 16px; }
-.browser-row { height: 14px; background: #1c3050; border-radius: 7px; margin-bottom: 10px; }
-.browser-row.short { width: 60%; }
-.browser-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 16px; }
-.browser-grid span { aspect-ratio: 1; background: #1c3050; border-radius: 10px; }
+.browser-viewport { position: relative; width: 100%; aspect-ratio: 4 / 3; overflow: hidden; background: var(--bg-soft); }
+.browser-frame { position: absolute; top: 0; left: 0; width: 1280px; height: 960px; border: 0; transform-origin: 0 0; transform: scale(0.4); pointer-events: none; }
 
 /* Pricing */
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }

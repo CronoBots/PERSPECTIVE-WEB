@@ -321,4 +321,19 @@
       });
     });
   }
+
+  // Aperçu en direct : mise à l'échelle responsive de l'iframe (largeur de référence 1280px)
+  document.querySelectorAll(".browser-frame").forEach((frame) => {
+    const viewport = frame.parentElement;
+    const BASE = 1280;
+    const fit = () => {
+      frame.style.transform = "scale(" + viewport.clientWidth / BASE + ")";
+    };
+    fit();
+    if (window.ResizeObserver) {
+      new ResizeObserver(fit).observe(viewport);
+    } else {
+      window.addEventListener("resize", fit);
+    }
+  });
 })();
