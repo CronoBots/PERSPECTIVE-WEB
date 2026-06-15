@@ -7,6 +7,20 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Bascule de thème clair / sombre (mémorisée)
+  const themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const root = document.documentElement;
+      const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
+
+  // L'intro ne se rejoue pas pendant la session
+  try { sessionStorage.setItem("introShown", "1"); } catch (e) {}
+
   // En-tête : ombre au scroll + bouton retour en haut + barre de progression
   const header = document.querySelector(".site-header");
   const toTop = document.getElementById("to-top");
