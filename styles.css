@@ -139,19 +139,16 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost { background: rgba(56, 189, 248, 0.12); color: var(--primary); padding: 0.6rem 1.15rem; }
 .btn-ghost:hover { background: rgba(56, 189, 248, 0.2); }
 
-/* Header */
+/* Header — fond solide opaque (couleur de la page), aucune transparence ni flou */
 .site-header {
   position: sticky; top: 0; z-index: 1000;
-  background: var(--header-bg);
+  background-color: var(--bg);
   border-bottom: 1px solid transparent;
-  transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), backdrop-filter 0.3s var(--ease);
+  transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
 }
 .site-header.scrolled {
-  background: var(--header-bg-scrolled);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
   border-bottom-color: var(--border-soft);
-  box-shadow: none;
+  box-shadow: 0 8px 24px -18px rgba(0, 0, 0, 0.55);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .brand { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
