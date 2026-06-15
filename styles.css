@@ -139,21 +139,14 @@ a { color: inherit; text-decoration: none; }
 .btn-ghost { background: rgba(56, 189, 248, 0.12); color: var(--primary); padding: 0.6rem 1.15rem; }
 .btn-ghost:hover { background: rgba(56, 189, 248, 0.2); }
 
-/* Header — fixe et transparent par-dessus le héros, solide une fois le héros dépassé */
+/* Header — barre fixe, solide et visible dès le héros */
 .site-header {
   position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  background-color: transparent;
-  border-bottom: 1px solid transparent;
+  background-color: var(--bg);
+  border-bottom: 1px solid var(--border-soft);
   transition: background-color 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
-.site-header:not(.scrolled) .brand,
-.site-header:not(.scrolled) .theme-toggle,
-.site-header:not(.scrolled) .nav-toggle span {
-  filter: drop-shadow(0 1px 6px rgba(0, 0, 0, 0.45));
-}
 .site-header.scrolled {
-  background-color: var(--bg);
-  border-bottom-color: var(--border-soft);
   box-shadow: 0 8px 24px -18px rgba(0, 0, 0, 0.55);
 }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
