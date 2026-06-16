@@ -1,7 +1,8 @@
-# Perspective Web
+# PointComme
 
-Site vitrine de **Perspective Web** — création de sites internet modernes et mobiles
-pour les commerces de la région du Condroz (Belgique).
+Site vitrine de **PointComme** (pointcomme.be) — création de sites web et
+d'applications mobiles pour les commerces et indépendants de la région du
+Condroz (Belgique).
 
 Le site présente l'offre, les tarifs (Essentiel 29 €/mois · Pro 49 €/mois · Premium
 79 €/mois), un exemple concret et un formulaire de demande de maquette gratuite.
