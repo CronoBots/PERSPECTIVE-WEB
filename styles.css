@@ -549,14 +549,20 @@ html.js:not(.no-intro) .intro {
    (halos cyan + violet, cartes à bordure lumineuse, labels mono)
    =================================================================== */
 
-/* Halos de fond diffus */
-:root[data-theme="dark"] body {
+/* Halos de fond diffus + dérive lente */
+:root[data-theme="dark"] { background-color: var(--bg); }
+:root[data-theme="dark"] body { background: transparent; }
+:root[data-theme="dark"] body::before {
+  content: ""; position: fixed; inset: -10%; z-index: -1; pointer-events: none;
   background:
-    radial-gradient(1000px circle at 50% -12%, rgba(124, 92, 255, 0.13), transparent 60%),
-    radial-gradient(780px circle at 92% 0%, rgba(56, 189, 248, 0.10), transparent 55%),
-    radial-gradient(680px circle at 4% 22%, rgba(124, 92, 255, 0.07), transparent 55%),
-    var(--bg);
-  background-attachment: fixed;
+    radial-gradient(1000px circle at 50% 2%, rgba(124, 92, 255, 0.16), transparent 58%),
+    radial-gradient(820px circle at 92% 6%, rgba(56, 189, 248, 0.12), transparent 52%),
+    radial-gradient(720px circle at 4% 30%, rgba(124, 92, 255, 0.08), transparent 55%);
+  animation: halo-drift 20s ease-in-out infinite;
+}
+@keyframes halo-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.95; }
+  50% { transform: translate(1.8%, 1.4%) scale(1.06); opacity: 1; }
 }
 
 /* Labels / petits textes en monospace (signature betsfix) */
@@ -607,3 +613,27 @@ html.js:not(.no-intro) .intro {
 /* Titres un cran plus marqués */
 .hero h1 { letter-spacing: -0.025em; }
 .section-title { letter-spacing: -0.02em; }
+
+/* --- Animations néon --- */
+/* Dégradé animé du mot d'accent */
+:root[data-theme="dark"] .gradient-text {
+  background: linear-gradient(110deg, var(--primary), var(--primary-2), #22d3ee, var(--primary));
+  background-size: 240% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  animation: accent-shift 7s ease-in-out infinite;
+}
+@keyframes accent-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+/* Pulsation lumineuse de l'offre populaire */
+:root[data-theme="dark"] .plan-featured { animation: plan-pulse 3.6s ease-in-out infinite; }
+@keyframes plan-pulse {
+  0%, 100% { box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.14), 0 0 40px -14px rgba(56, 189, 248, 0.30); }
+  50% { box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.26), 0 0 56px -10px rgba(56, 189, 248, 0.48); }
+}
+
+/* Halo pulsé du logo */
+:root[data-theme="dark"] .brand-mark { animation: mark-glow 4.5s ease-in-out infinite; }
+@keyframes mark-glow {
+  0%, 100% { box-shadow: 0 0 16px -2px rgba(56, 189, 248, 0.45); }
+  50% { box-shadow: 0 0 26px 0 rgba(124, 92, 255, 0.6); }
+}
