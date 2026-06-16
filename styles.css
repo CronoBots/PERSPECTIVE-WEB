@@ -1,16 +1,17 @@
 :root {
-  --bg: #070b14;
-  --bg-soft: #0b1220;
-  --bg-card: #111c30;
-  --border: #21385a;
-  --border-soft: #1a2a44;
-  --text: #eef3fb;
-  --text-muted: #9fb2cc;
+  --bg: #060912;
+  --bg-soft: #0a0f1c;
+  --bg-card: #0c1424;
+  --border: #1e2f4d;
+  --border-soft: #172339;
+  --text: #eaf1fb;
+  --text-muted: #8493a8;
   --primary: #38bdf8;
-  --primary-2: #6366f1;
+  --primary-2: #7c5cff;
   --accent: #34d399;
   --danger: #f87171;
-  --accent-ink: #56c7fb;
+  --accent-ink: #5cc8ff;
+  --neon-border: rgba(92, 168, 255, 0.22);
   --header-bg: transparent;
   --header-bg-scrolled: rgba(8, 13, 24, 0.96);
   --btn-secondary-bg: rgba(255, 255, 255, 0.03);
@@ -20,6 +21,7 @@
   --shadow-glow: 0 14px 40px -12px rgba(56, 189, 248, 0.45);
   --container: 1140px;
   --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -541,3 +543,67 @@ html.js:not(.no-intro) .intro {
   .js [data-reveal], [data-reveal] { opacity: 1 !important; transform: none !important; }
   .intro { display: none !important; }
 }
+
+/* ===================================================================
+   Thème néon sombre — inspiré de betsfix / cronos.wtf
+   (halos cyan + violet, cartes à bordure lumineuse, labels mono)
+   =================================================================== */
+
+/* Halos de fond diffus */
+:root[data-theme="dark"] body {
+  background:
+    radial-gradient(1000px circle at 50% -12%, rgba(124, 92, 255, 0.13), transparent 60%),
+    radial-gradient(780px circle at 92% 0%, rgba(56, 189, 248, 0.10), transparent 55%),
+    radial-gradient(680px circle at 4% 22%, rgba(124, 92, 255, 0.07), transparent 55%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Labels / petits textes en monospace (signature betsfix) */
+.eyebrow { font-family: var(--font-mono); letter-spacing: 0.2em; }
+.compare-tag, .plan-badge, .ba-badge, .trades-label, .browser-url, .footer-build { font-family: var(--font-mono); }
+.hero-stats strong { letter-spacing: -0.01em; }
+
+/* Cartes à bordure lumineuse */
+:root[data-theme="dark"] .feature-card,
+:root[data-theme="dark"] .step,
+:root[data-theme="dark"] .plan,
+:root[data-theme="dark"] .compare-card,
+:root[data-theme="dark"] .browser,
+:root[data-theme="dark"] .ba-stage,
+:root[data-theme="dark"] .faq-item {
+  border-color: var(--neon-border);
+  box-shadow: 0 24px 60px -34px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+:root[data-theme="dark"] .feature-card:hover,
+:root[data-theme="dark"] .step:hover,
+:root[data-theme="dark"] .plan:not(.plan-featured):hover,
+:root[data-theme="dark"] .compare-card:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.12), 0 0 34px -6px rgba(56, 189, 248, 0.28), 0 24px 60px -34px rgba(0, 0, 0, 0.9);
+}
+
+/* Offre populaire : bordure néon + liseré lumineux */
+:root[data-theme="dark"] .plan-featured {
+  border-color: rgba(56, 189, 248, 0.55);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.14), 0 0 48px -10px rgba(56, 189, 248, 0.34);
+}
+.plan-featured::before { box-shadow: 0 0 18px rgba(56, 189, 248, 0.6); }
+
+/* Lueurs : logo, boutons, icônes, champs, retour-haut */
+:root[data-theme="dark"] .brand-mark { box-shadow: 0 0 20px -2px rgba(56, 189, 248, 0.55); }
+:root[data-theme="dark"] .btn-primary { box-shadow: 0 10px 30px -12px rgba(56, 189, 248, 0.5); }
+:root[data-theme="dark"] .btn-primary:hover { box-shadow: 0 0 26px -4px rgba(56, 189, 248, 0.6), 0 12px 30px -12px rgba(124, 92, 255, 0.5); }
+:root[data-theme="dark"] .btn-secondary { border-color: rgba(56, 189, 248, 0.32); }
+:root[data-theme="dark"] .btn-secondary:hover { border-color: var(--primary); box-shadow: 0 0 22px -8px rgba(56, 189, 248, 0.45); }
+:root[data-theme="dark"] .feature-icon { box-shadow: 0 0 24px -10px rgba(56, 189, 248, 0.5); }
+:root[data-theme="dark"] .theme-toggle:hover,
+:root[data-theme="dark"] .to-top:hover { box-shadow: 0 0 20px -8px rgba(56, 189, 248, 0.5); }
+:root[data-theme="dark"] .cta-form input:focus { box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.16), 0 0 24px -8px rgba(56, 189, 248, 0.4); }
+:root[data-theme="dark"] .trade:hover { border-color: rgba(56, 189, 248, 0.45); box-shadow: 0 0 18px -10px rgba(56, 189, 248, 0.5); }
+:root[data-theme="dark"] .trade.is-active { box-shadow: 0 0 22px -8px rgba(56, 189, 248, 0.55); }
+.scroll-progress { box-shadow: 0 0 12px rgba(56, 189, 248, 0.6); }
+
+/* Titres un cran plus marqués */
+.hero h1 { letter-spacing: -0.025em; }
+.section-title { letter-spacing: -0.02em; }
