@@ -42,7 +42,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+html { scroll-behavior: smooth; scroll-padding-top: 84px; touch-action: manipulation; }
 
 body {
   font-family: var(--font-body);
@@ -53,6 +53,14 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+  -webkit-user-select: none; -moz-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+/* Les champs de saisie restent sélectionnables */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text; -moz-user-select: text; user-select: text;
 }
 
 img { max-width: 100%; display: block; }
@@ -81,10 +89,13 @@ a { color: inherit; text-decoration: none; }
 }
 
 .gradient-text {
-  background: linear-gradient(110deg, var(--primary), var(--primary-2));
+  background: linear-gradient(110deg, var(--primary), var(--primary-2), #22d3ee, var(--primary));
+  background-size: 220% 100%;
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: accent-shift 9s ease-in-out infinite;
 }
+@keyframes accent-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 
 .eyebrow {
   font-family: var(--font-display);
@@ -167,8 +178,13 @@ a { color: inherit; text-decoration: none; }
 .hero-bg::before {
   content: ""; position: absolute; top: -260px; left: 50%;
   width: 1200px; height: 900px; margin-left: -600px;
-  background: radial-gradient(closest-side, rgba(99, 102, 241, 0.11), rgba(56, 189, 248, 0.06) 45%, transparent 72%);
+  background: radial-gradient(closest-side, rgba(99, 102, 241, 0.13), rgba(56, 189, 248, 0.07) 45%, transparent 72%);
   filter: blur(28px);
+  animation: aurora-float 16s ease-in-out infinite;
+}
+@keyframes aurora-float {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-3%, 2.5%) scale(1.07); opacity: 1; }
 }
 .hero-bg::after {
   content: ""; position: absolute; inset: 0;
@@ -648,3 +664,28 @@ html.js:not(.no-intro) .intro {
 @media (max-width: 760px) {
   .logo-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* === Touches premium === */
+/* Soulignement animé des titres centrés au scroll */
+.section-title[data-reveal]::after {
+  content: ""; display: block; width: 0; height: 3px; margin: 0.85rem auto 0;
+  border-radius: 2px; background: linear-gradient(90deg, var(--primary), var(--primary-2));
+  transition: width 0.7s var(--ease) 0.15s;
+}
+.section-title[data-reveal].is-visible::after { width: 56px; }
+
+/* Micro-interaction sur les icônes d'avantages */
+.feature-icon { transition: transform 0.3s var(--ease), background 0.25s var(--ease), color 0.25s var(--ease); }
+.feature-card:hover .feature-icon { transform: translateY(-3px) rotate(-5deg) scale(1.05); color: var(--primary); }
+
+/* Reflet de balayage sur le bouton principal */
+.btn-primary::after {
+  content: ""; position: absolute; top: 0; left: -130%; width: 55%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-18deg); transition: left 0.6s var(--ease); pointer-events: none;
+}
+.btn-primary:hover::after { left: 150%; }
+
+/* Lien de retour-haut : petite rotation au survol */
+.to-top { transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s, border-color 0.2s, color 0.2s; }
+.to-top:hover { transform: translateY(-3px); }

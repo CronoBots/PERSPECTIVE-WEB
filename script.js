@@ -3,6 +3,11 @@
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Verrouillage type application : pas de zoom au pincement (iOS)
+  ["gesturestart", "gesturechange", "gestureend"].forEach((evt) =>
+    document.addEventListener(evt, (e) => e.preventDefault(), { passive: false })
+  );
+
   // Année dynamique
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -380,25 +385,26 @@
     }
   }
 
-  // Carrousel de témoignages
+  // Carrousel de témoignages (auto, pause au survol/focus, glissé, clavier)
   const testi = document.querySelector("[data-testi]");
   if (testi) {
     const cards = Array.from(testi.querySelectorAll(".testi-card"));
     const dotsWrap = testi.querySelector(".testi-dots");
+    const viewport = testi.querySelector(".testi-viewport");
     if (cards.length && dotsWrap) {
       let idx = 0;
       let timer = null;
       const show = (i) => {
+        i = (i + cards.length) % cards.length;
         cards[idx].classList.remove("is-active");
         dots[idx].classList.remove("is-active");
         idx = i;
         cards[idx].classList.add("is-active");
         dots[idx].classList.add("is-active");
       };
-      const restart = () => {
-        if (timer) clearInterval(timer);
-        if (!prefersReduced) timer = setInterval(() => show((idx + 1) % cards.length), 5000);
-      };
+      const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+      const play = () => { if (!prefersReduced && !timer) timer = setInterval(() => show(idx + 1), 5000); };
+      const restart = () => { stop(); play(); };
       const dots = cards.map((_, i) => {
         const b = document.createElement("button");
         b.type = "button";
@@ -408,7 +414,25 @@
         return b;
       });
       dots[0].classList.add("is-active");
-      restart();
+      testi.addEventListener("pointerenter", stop);
+      testi.addEventListener("pointerleave", play);
+      testi.addEventListener("focusin", stop);
+      testi.addEventListener("focusout", play);
+      testi.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft") { show(idx - 1); restart(); }
+        else if (e.key === "ArrowRight") { show(idx + 1); restart(); }
+      });
+      if (viewport) {
+        let x0 = null;
+        viewport.addEventListener("touchstart", (e) => { x0 = e.touches[0].clientX; }, { passive: true });
+        viewport.addEventListener("touchend", (e) => {
+          if (x0 === null) return;
+          const dx = e.changedTouches[0].clientX - x0;
+          if (Math.abs(dx) > 40) { show(idx + (dx < 0 ? 1 : -1)); restart(); }
+          x0 = null;
+        }, { passive: true });
+      }
+      play();
     }
   }
 })();
