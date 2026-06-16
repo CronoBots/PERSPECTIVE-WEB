@@ -104,8 +104,7 @@
     requestAnimationFrame(tick);
   }
 
-  const counterWrap = document.querySelector("[data-counters]");
-  if (counterWrap) {
+  document.querySelectorAll("[data-counters]").forEach((counterWrap) => {
     const counters = counterWrap.querySelectorAll("[data-count]");
     if (prefersReduced || !("IntersectionObserver" in window)) {
       counters.forEach(animateCount);
@@ -123,7 +122,7 @@
       );
       countObserver.observe(counterWrap);
     }
-  }
+  });
 
   // Navigation active (scrollspy)
   const navLinks = Array.from(document.querySelectorAll('.nav-menu a[href^="#"]'));
@@ -392,5 +391,37 @@
         ticking = false;
       });
     }, { passive: true });
+  }
+
+  // Carrousel de témoignages
+  const testi = document.querySelector("[data-testi]");
+  if (testi) {
+    const cards = Array.from(testi.querySelectorAll(".testi-card"));
+    const dotsWrap = testi.querySelector(".testi-dots");
+    if (cards.length && dotsWrap) {
+      let idx = 0;
+      let timer = null;
+      const show = (i) => {
+        cards[idx].classList.remove("is-active");
+        dots[idx].classList.remove("is-active");
+        idx = i;
+        cards[idx].classList.add("is-active");
+        dots[idx].classList.add("is-active");
+      };
+      const restart = () => {
+        if (timer) clearInterval(timer);
+        if (!prefersReduced) timer = setInterval(() => show((idx + 1) % cards.length), 5000);
+      };
+      const dots = cards.map((_, i) => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.setAttribute("aria-label", "Avis " + (i + 1));
+        b.addEventListener("click", () => { show(i); restart(); });
+        dotsWrap.appendChild(b);
+        return b;
+      });
+      dots[0].classList.add("is-active");
+      restart();
+    }
   }
 })();
