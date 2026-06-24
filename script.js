@@ -160,7 +160,7 @@
     const submitBtn = document.getElementById("contact-submit");
     const formCheck = document.getElementById("form-check");
     const endpoint = (form.dataset.endpoint || "").trim();
-    const mailTo = form.dataset.mailto || "contact@perspectiveweb.be";
+    const mailTo = form.dataset.mailto || "contact@digitalconcept.be";
     if (endpoint) form.setAttribute("action", endpoint); // repli sans JS
 
     function showError(msg) {
@@ -178,7 +178,7 @@
     function setLoading(on) {
       if (!submitBtn) return;
       submitBtn.disabled = on;
-      submitBtn.textContent = on ? "Envoi…" : "Recevoir ma maquette";
+      submitBtn.textContent = on ? "Envoi…" : "Demander un devis gratuit";
     }
 
     form.addEventListener("submit", (event) => {

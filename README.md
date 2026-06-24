@@ -1,20 +1,19 @@
-# PointComme
+# Digital Concept
 
-Site vitrine de **PointComme** (pointcomme.be) — création de sites web et
-d'applications mobiles pour les commerces et indépendants de la région du
-Condroz (Belgique).
-
-Le site présente l'offre, les tarifs (Essentiel 29 €/mois · Pro 49 €/mois · Premium
-79 €/mois), un exemple concret et un formulaire de demande de maquette gratuite.
+Site vitrine de **Digital Concept** (digitalconcept.be) — agence digitale en
+Belgique. Création de **sites web**, **applications mobiles**, solutions
+d'**intelligence artificielle**, **crypto/blockchain** et **bots pour réseaux
+sociaux**. Des solutions sur mesure pour faire grandir votre entreprise.
 
 ## Structure
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Page unique (hero, avantages, avant/après, méthode, exemple, tarifs, FAQ, contact) + SEO et données structurées JSON-LD |
+| `index.html` | Page unique (hero, services, réalisations, partenaire, méthode, expertises, résultats, avis, FAQ, contact) + SEO et données structurées JSON-LD |
 | `styles.css` | Thème sombre premium, responsive, mobile-first, animations |
-| `script.js` | Apparition au scroll, navigation active, compteurs animés, en-tête au scroll, retour-en-haut, menu mobile, validation du formulaire |
-| `favicon.svg` | Icône de l'onglet |
+| `script.js` | Apparition au scroll, navigation active, compteurs animés, en-tête au scroll, retour-en-haut, menu mobile, validation du formulaire, terminal animé, carrousel d'avis |
+| `favicon.svg` | Monogramme « DC » de l'onglet |
+| `CNAME` | Domaine personnalisé GitHub Pages (`digitalconcept.be`) |
 | `robots.txt` / `sitemap.xml` | Référencement |
 
 ## Optimisations intégrées
@@ -36,8 +35,9 @@ python3 -m http.server 8000
 
 ## Déploiement
 
-Hébergeable tel quel sur n'importe quel hébergement statique (GitHub Pages,
-Netlify, Cloudflare Pages…).
+Hébergé sur **GitHub Pages** (workflow `.github/workflows/deploy-pages.yml`), avec
+le domaine personnalisé `digitalconcept.be` (fichier `CNAME`). Hébergeable tel quel
+sur n'importe quel hébergement statique (Netlify, Cloudflare Pages…).
 
 ## Formulaire de contact
 
@@ -46,11 +46,11 @@ Le formulaire est **fonctionnel** :
   vers l'adresse indiquée dans `data-mailto` (aucune inscription requise).
 - Pour un envoi fluide sans quitter la page, créez un formulaire gratuit sur
   [Formspree](https://formspree.io) et collez son identifiant dans l'attribut
-  `data-endpoint` du `<form id="contact-form">` (ex.
-  `data-endpoint="https://formspree.io/f/xxxxxxx"`). Le script bascule alors
-  automatiquement en envoi AJAX (avec état de chargement et anti-spam).
+  `data-endpoint` du `<form id="contact-form">`.
 
-## À faire / à personnaliser
+## À personnaliser
 
-- Ajouter le logo définitif et des photos réelles une fois disponibles.
+- **Coordonnées** : l'e-mail `contact@digitalconcept.be` est utilisé partout —
+  remplacez-le par votre adresse réelle et ajoutez un numéro de téléphone si souhaité.
+- Ajouter le logo définitif, des photos et de vraies réalisations clients.
 - (Optionnel) Activer Formspree pour l'envoi du formulaire sans quitter la page.

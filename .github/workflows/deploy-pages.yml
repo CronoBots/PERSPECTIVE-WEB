@@ -3,7 +3,7 @@ name: Déploiement GitHub Pages
 on:
   push:
     branches:
-      - claude/website-perspective-conversation-4yzu4m
+      - claude/digital-concept-domain-lqrreg
       - main
   workflow_dispatch:
 

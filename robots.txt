@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pointcomme.be/sitemap.xml
+Sitemap: https://digitalconcept.be/sitemap.xml

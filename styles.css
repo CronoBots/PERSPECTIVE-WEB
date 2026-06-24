@@ -152,11 +152,25 @@ a { color: inherit; text-decoration: none; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 72px; }
 .brand { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
 .brand-mark {
-  width: 28px; height: 28px; border-radius: 9px; position: relative;
-  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  position: relative;
+  width: 34px; height: 34px; flex: none; border-radius: 10px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.92rem;
+  letter-spacing: -0.04em; color: #fff;
+  background: linear-gradient(150deg, #0b1730, #0a1120);
+  border: 1px solid var(--border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 0 22px -8px rgba(56, 189, 248, 0.7);
 }
-.brand-mark::after { content: ""; position: absolute; inset: 7px; border-radius: 3px; background: var(--bg); }
-.brand-web { color: var(--accent-ink); }
+.brand-mark::after {
+  content: ""; position: absolute; top: 5px; right: 5px;
+  width: 6px; height: 6px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 0 10px var(--primary);
+}
+.brand-web {
+  background: linear-gradient(120deg, var(--primary), var(--primary-2));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
 .nav-menu { display: flex; align-items: center; gap: 1.7rem; list-style: none; }
 .nav-menu a { color: var(--text-muted); font-size: 0.95rem; position: relative; transition: color 0.18s; }
 .nav-menu a:not(.btn-ghost)::after {
@@ -724,3 +738,66 @@ html.js:not(.no-intro) .intro {
 }
 .cursor-dot.is-active { opacity: 1; }
 .cursor-dot.is-hover { width: 48px; height: 48px; background: rgba(56, 189, 248, 0.12); }
+
+/* ===================================================================
+   Digital Concept — sections agence (atouts, partenaire, méthode)
+   =================================================================== */
+
+/* Logo agrandi dans l'intro */
+.intro-logo .brand-mark { width: 46px; height: 46px; font-size: 1.25rem; border-radius: 13px; }
+
+/* Bandeau d'atouts sous le héros */
+.highlights { border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); background: var(--bg-soft); }
+.highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding: 30px 24px; }
+.highlight { display: flex; align-items: center; gap: 14px; }
+.highlight-ic {
+  width: 46px; height: 46px; flex: none; border-radius: 12px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(56, 189, 248, 0.1); color: var(--primary);
+}
+.highlight-ic svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.highlight div { display: flex; flex-direction: column; line-height: 1.3; }
+.highlight strong { font-family: var(--font-display); font-size: 0.98rem; }
+.highlight span { font-size: 0.84rem; color: var(--text-muted); }
+
+/* Méthode sur 4 colonnes */
+.steps-4 { grid-template-columns: repeat(4, 1fr); }
+.steps-4 [data-reveal].is-visible:nth-child(4) { transition-delay: 0.3s; }
+
+/* Section partenaire (texte + grille de stats) */
+.clients { background: var(--bg-soft); }
+.partner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.partner-title { text-align: left; margin: 0 0 0.6rem; max-width: none; }
+.partner-text .lead { margin-bottom: 1.6rem; }
+.partner-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.partner-list li { color: var(--text-muted); padding-left: 1.7rem; position: relative; }
+.partner-list li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.partner-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.stat-box {
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.06), var(--bg-card));
+  border: 1px solid var(--border-soft); border-radius: var(--radius);
+  padding: 28px 24px; text-align: center;
+  transition: transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.stat-box:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: var(--shadow); }
+.stat-box strong {
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1; margin-bottom: 0.4rem;
+  background: linear-gradient(120deg, var(--primary), var(--primary-2));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat-box span { font-size: 0.86rem; color: var(--text-muted); }
+
+@media (max-width: 900px) {
+  .highlights-grid { grid-template-columns: 1fr 1fr; gap: 22px 18px; }
+  .partner-grid { grid-template-columns: 1fr; gap: 36px; }
+  .partner-title { text-align: center; }
+  .partner-text { text-align: center; }
+  .partner-list { display: inline-flex; text-align: left; }
+  .steps-4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 520px) {
+  .highlights-grid { grid-template-columns: 1fr; }
+  .partner-stats { grid-template-columns: 1fr 1fr; }
+  .steps-4 { grid-template-columns: 1fr; }
+}
