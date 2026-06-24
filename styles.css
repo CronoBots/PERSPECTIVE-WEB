@@ -728,16 +728,7 @@ html.js:not(.no-intro) .intro {
 /* Perf : compositing des éléments animés */
 .marquee-track, .phone { will-change: transform; }
 
-/* Curseur personnalisé (desktop, anneau avec inertie) */
-.cursor-dot {
-  position: fixed; top: 0; left: 0; width: 30px; height: 30px;
-  border: 1.5px solid var(--primary); border-radius: 50%;
-  pointer-events: none; z-index: 9999; opacity: 0;
-  transition: width 0.22s var(--ease), height 0.22s var(--ease), background-color 0.22s var(--ease), border-color 0.22s var(--ease), opacity 0.3s var(--ease);
-  will-change: transform;
-}
-.cursor-dot.is-active { opacity: 1; }
-.cursor-dot.is-hover { width: 48px; height: 48px; background: rgba(56, 189, 248, 0.12); }
+/* (Curseur personnalisé retiré — pas d'effet de suivi de curseur) */
 
 /* ===================================================================
    Digital Concept — sections agence (atouts, partenaire, méthode)
@@ -968,4 +959,46 @@ html.js:not(.no-intro) .intro {
 @media (max-width: 560px) {
   .footer-grid { grid-template-columns: 1fr; }
   .project-grid { grid-template-columns: 1fr; }
+}
+
+/* ===================================================================
+   Fond animé ambiant lié au thème (blobs dégradés qui dérivent)
+   =================================================================== */
+.bg-fx { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+.bg-fx::before {
+  content: ""; position: absolute; inset: 0;
+  background-image: linear-gradient(var(--border-soft) 1px, transparent 1px),
+                    linear-gradient(90deg, var(--border-soft) 1px, transparent 1px);
+  background-size: 64px 64px; opacity: 0.18;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 0%, #000 0%, transparent 70%);
+  mask-image: radial-gradient(120% 90% at 50% 0%, #000 0%, transparent 70%);
+}
+.bg-fx span {
+  position: absolute; border-radius: 50%; filter: blur(90px);
+  opacity: 0.45; mix-blend-mode: screen; will-change: transform;
+}
+.bg-fx span:nth-child(1) {
+  width: 560px; height: 560px; left: -140px; top: -120px;
+  background: radial-gradient(closest-side, rgba(56, 189, 248, 0.55), transparent 70%);
+  animation: blob-a 28s ease-in-out infinite;
+}
+.bg-fx span:nth-child(2) {
+  width: 520px; height: 520px; right: -160px; top: 26%;
+  background: radial-gradient(closest-side, rgba(99, 102, 241, 0.5), transparent 70%);
+  animation: blob-b 34s ease-in-out infinite;
+}
+.bg-fx span:nth-child(3) {
+  width: 460px; height: 460px; left: 38%; bottom: -180px;
+  background: radial-gradient(closest-side, rgba(34, 211, 238, 0.4), transparent 70%);
+  animation: blob-c 31s ease-in-out infinite;
+}
+@keyframes blob-a { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(60px, 50px) scale(1.12); } }
+@keyframes blob-b { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-70px, 40px) scale(1.08); } }
+@keyframes blob-c { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(40px, -60px) scale(1.15); } }
+
+:root[data-theme="light"] .bg-fx span { opacity: 0.3; mix-blend-mode: multiply; filter: blur(100px); }
+:root[data-theme="light"] .bg-fx::before { opacity: 0.5; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-fx span { animation: none !important; }
 }

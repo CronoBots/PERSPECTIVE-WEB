@@ -23,6 +23,14 @@
   <meta name="theme-color" content="#f6f8fc" media="(prefers-color-scheme: light)" />
   <link rel="canonical" href="https://digitalconcept.be/" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.svg" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="author" content="Digital Concept" />
+  <meta name="publisher" content="Digital Concept" />
+  <meta name="keywords" content="création site web Belgique, développement application mobile, agence digitale, intelligence artificielle, chatbot IA, crypto blockchain, smart contract, bot Instagram Telegram Discord, e-commerce, SEO, automatisation, Digital Concept" />
+  <meta name="geo.region" content="BE" />
+  <meta name="geo.placename" content="Belgique" />
+  <meta name="rating" content="general" />
 
   <!-- Open Graph / réseaux sociaux -->
   <meta property="og:type" content="website" />
@@ -31,9 +39,16 @@
   <meta property="og:title" content="Digital Concept — Solutions digitales sur mesure" />
   <meta property="og:description" content="Sites web, applications mobiles, IA, crypto et bots réseaux sociaux. Des solutions sur mesure pour faire grandir votre entreprise." />
   <meta property="og:url" content="https://digitalconcept.be/" />
+  <meta property="og:image" content="https://digitalconcept.be/og-image.svg" />
+  <meta property="og:image:type" content="image/svg+xml" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Digital Concept — solutions digitales sur mesure : sites web, applications, IA, crypto et bots" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Digital Concept — Solutions digitales sur mesure" />
   <meta name="twitter:description" content="Sites web, applications mobiles, IA, crypto et bots réseaux sociaux. Des solutions sur mesure pour faire grandir votre entreprise." />
+  <meta name="twitter:image" content="https://digitalconcept.be/og-image.svg" />
+  <meta name="twitter:image:alt" content="Digital Concept — solutions digitales sur mesure" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -43,19 +58,68 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Digital Concept",
-    "description": "Agence digitale en Belgique : sites web, applications mobiles, intelligence artificielle, solutions crypto/blockchain et bots pour réseaux sociaux. Des solutions sur mesure pour faire grandir votre entreprise.",
-    "url": "https://digitalconcept.be/",
-    "email": "contact@digitalconcept.be",
-    "areaServed": "Belgique",
-    "serviceType": ["Création de sites web", "Développement d'applications mobiles", "Intelligence artificielle", "Solutions crypto et blockchain", "Bots pour réseaux sociaux"]
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://digitalconcept.be/#organization",
+        "name": "Digital Concept",
+        "url": "https://digitalconcept.be/",
+        "email": "contact@digitalconcept.be",
+        "logo": "https://digitalconcept.be/favicon.svg",
+        "image": "https://digitalconcept.be/og-image.svg",
+        "description": "Agence digitale en Belgique : sites web, applications mobiles, intelligence artificielle, solutions crypto/blockchain et bots pour réseaux sociaux.",
+        "areaServed": { "@type": "Country", "name": "Belgique" }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://digitalconcept.be/#website",
+        "url": "https://digitalconcept.be/",
+        "name": "Digital Concept",
+        "inLanguage": "fr-BE",
+        "publisher": { "@id": "https://digitalconcept.be/#organization" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://digitalconcept.be/#service",
+        "name": "Digital Concept",
+        "url": "https://digitalconcept.be/",
+        "email": "contact@digitalconcept.be",
+        "image": "https://digitalconcept.be/og-image.svg",
+        "description": "Solutions digitales sur mesure pour faire grandir votre entreprise : création de sites web, développement d'applications mobiles, intelligence artificielle, crypto/blockchain et bots pour réseaux sociaux.",
+        "areaServed": { "@type": "Country", "name": "Belgique" },
+        "parentOrganization": { "@id": "https://digitalconcept.be/#organization" },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Services Digital Concept",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Création de sites web" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Développement d'applications mobiles" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intelligence artificielle" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Crypto et blockchain" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Bots pour réseaux sociaux" } }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://digitalconcept.be/#faq",
+        "mainEntity": [
+          { "@type": "Question", "name": "Combien coûte un projet ?", "acceptedAnswer": { "@type": "Answer", "text": "Chaque projet est unique. On établit un devis gratuit et transparent après un premier échange, en fonction de vos besoins et de votre budget. Aucune surprise." } },
+          { "@type": "Question", "name": "En combien de temps mon projet est-il livré ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine prend généralement quelques jours à deux semaines. Une application ou une solution sur mesure, quelques semaines. On vous donne un planning clair dès le départ." } },
+          { "@type": "Question", "name": "Je ne suis pas technique, est-ce un problème ?", "acceptedAnswer": { "@type": "Answer", "text": "Pas du tout : c'est tout l'intérêt. On vulgarise, on vous guide et on s'occupe de toute la technique. Vous gardez le contrôle, sans la complexité." } },
+          { "@type": "Question", "name": "Faites-vous aussi le suivi après la mise en ligne ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Hébergement, mises à jour, corrections et évolutions : on reste votre partenaire dans la durée, avec des formules de maintenance adaptées." } },
+          { "@type": "Question", "name": "Travaillez-vous avec des clients hors de Belgique ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. On travaille à distance partout, avec des échanges réguliers en visio. La distance n'est pas un frein à un projet réussi." } },
+          { "@type": "Question", "name": "Pouvez-vous reprendre un projet existant ?", "acceptedAnswer": { "@type": "Answer", "text": "Bien sûr. On peut auditer, améliorer ou moderniser un site, une app ou un outil déjà en place, puis en assurer le suivi." } }
+        ]
+      }
+    ]
   }
   </script>
 </head>
 <body>
   <a href="#main" class="skip-link">Aller au contenu</a>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+  <div class="bg-fx" aria-hidden="true"><span></span><span></span><span></span></div>
 
   <div class="intro" id="intro" aria-hidden="true">
     <div class="intro-logo">
