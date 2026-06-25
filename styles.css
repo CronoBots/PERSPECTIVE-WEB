@@ -915,3 +915,17 @@ a.project:hover .project-thumb::after, a.project:focus-visible .project-thumb::a
 .form-rgpd { margin: 0.95rem auto 0; max-width: 50ch; font-size: 0.78rem; color: var(--text-muted); line-height: 1.45; }
 
 /* Pause des animations hors écran déjà gérée ; on évite le double-grille */
+
+/* Sélecteur de langue FR / EN */
+.lang-toggle {
+  margin-left: auto; flex: none;
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 42px; height: 40px; padding: 0 11px; border-radius: 999px;
+  background: var(--btn-secondary-bg); border: 1px solid var(--border);
+  color: var(--text-muted); cursor: pointer;
+  font-family: var(--font-display); font-weight: 700; font-size: 0.82rem; letter-spacing: 0.05em;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.lang-toggle:hover { color: var(--text); border-color: var(--primary); transform: translateY(-2px); }
+/* Le bouton de langue prend le margin-left:auto ; le thème suit juste à côté */
+.theme-toggle { margin-left: 0; }

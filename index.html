@@ -125,7 +125,7 @@
   </script>
 </head>
 <body>
-  <a href="#main" class="skip-link">Aller au contenu</a>
+  <a href="#main" class="skip-link" data-i18n="a11y.skip">Aller au contenu</a>
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
   <div class="bg-fx" aria-hidden="true"><span></span><span></span><span></span></div>
 
@@ -142,6 +142,7 @@
         <span class="brand-mark" aria-hidden="true">DC</span>
         <span class="brand-name">Digital<span class="brand-web">Concept</span></span>
       </a>
+      <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch to English" title="FR / EN">EN</button>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Changer de thème clair / sombre" title="Changer de thème">
         <svg class="ic ic-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4"/></svg>
         <svg class="ic ic-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8z"/></svg>
@@ -150,13 +151,13 @@
         <span></span><span></span><span></span>
       </button>
             <ul class="nav-menu" id="nav-menu">
-        <li><a href="#services">Services</a></li>
-        <li><a href="#realisations">Réalisations</a></li>
-        <li><a href="#apropos">À propos</a></li>
-        <li><a href="#methode">Méthode</a></li>
-        <li><a href="#expertises">Expertises</a></li>
-        <li><a href="#faq">Questions</a></li>
-        <li><a href="#contact" class="btn btn-ghost">Démarrer un projet</a></li>
+        <li><a href="#services" data-i18n="nav.services">Services</a></li>
+        <li><a href="#realisations" data-i18n="nav.realisations">Réalisations</a></li>
+        <li><a href="#apropos" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#methode" data-i18n="nav.method">Méthode</a></li>
+        <li><a href="#expertises" data-i18n="nav.expertise">Expertises</a></li>
+        <li><a href="#faq" data-i18n="nav.faq">Questions</a></li>
+        <li><a href="#contact" class="btn btn-ghost" data-i18n="nav.cta">Démarrer un projet</a></li>
       </ul>
     </nav>
   </header>
@@ -167,19 +168,19 @@
       <div class="hero-spotlight" id="hero-spotlight" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-content" data-reveal>
-          <p class="eyebrow">Agence digitale · Belgique</p>
-          <h1>Des solutions digitales<br /><span class="gradient-text">sur mesure</span> pour faire grandir votre entreprise</h1>
-          <p class="lead">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Agence digitale · Belgique</p>
+          <h1 data-i18n="hero.h1">Des solutions digitales<br /><span class="gradient-text">sur mesure</span> pour faire grandir votre entreprise</h1>
+          <p class="lead" data-i18n="hero.lead">
             De la stratégie au déploiement, nous concevons des sites web,
             applications mobiles et solutions d'intelligence artificielle
             performants. Une <strong>expertise complète</strong>, un interlocuteur
             unique et des résultats mesurables.
           </p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-primary">Démarrer un projet</a>
-            <a href="#services" class="btn btn-secondary">Découvrir nos services</a>
+            <a href="#contact" class="btn btn-primary" data-i18n="hero.cta1">Démarrer un projet</a>
+            <a href="#services" class="btn btn-secondary" data-i18n="hero.cta2">Découvrir nos services</a>
           </div>
-          <p class="hero-note">Devis <strong>gratuit</strong> et sans engagement — réponse sous <strong>24 h</strong>.</p>
+          <p class="hero-note" data-i18n="hero.note">Devis <strong>gratuit</strong> et sans engagement — réponse sous <strong>24 h</strong>.</p>
           <div class="terminal" data-terminal aria-hidden="true">
             <div class="terminal-bar">
               <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
@@ -194,9 +195,9 @@
             </div>
           </div>
           <ul class="hero-stats" data-counters>
-            <li><strong data-count="80" data-suffix="+">0+</strong><span>projets livrés</span></li>
-            <li><strong data-count="30" data-suffix="+">0+</strong><span>clients accompagnés</span></li>
-            <li><strong data-count="100" data-suffix="%">0%</strong><span>de clients satisfaits</span></li>
+            <li><strong data-count="80" data-suffix="+">0+</strong><span data-i18n="stats.projects">projets livrés</span></li>
+            <li><strong data-count="30" data-suffix="+">0+</strong><span data-i18n="stats.clients">clients accompagnés</span></li>
+            <li><strong data-count="100" data-suffix="%">0%</strong><span data-i18n="stats.satisfied">de clients satisfaits</span></li>
           </ul>
         </div>
         <div class="hero-visual" data-reveal aria-hidden="true">
@@ -239,9 +240,9 @@
             </div>
             <div class="laptop-base"></div>
           </div>
-          <div class="card-float card-float-1"><span class="dot"></span> Projet en production</div>
-          <div class="card-float card-float-2">Performance <small>optimisée</small></div>
-          <div class="card-float card-float-3">IA intégrée</div>
+          <div class="card-float card-float-1" data-i18n="cf1"><span class="dot"></span> Projet en production</div>
+          <div class="card-float card-float-2" data-i18n="cf2">Performance <small>optimisée</small></div>
+          <div class="card-float card-float-3" data-i18n="cf3">IA intégrée</div>
         </div>
       </div>
     </section>
@@ -252,25 +253,25 @@
           <span class="highlight-ic" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 16.9 7.2 18l.9-5.4L4.2 8.7l5.4-.8z"/></svg>
           </span>
-          <div><strong>Design sur mesure</strong><span>Des interfaces élégantes, pensées pour convertir</span></div>
+          <div data-i18n="hl1"><strong>Design sur mesure</strong><span>Des interfaces élégantes, pensées pour convertir</span></div>
         </div>
         <div class="highlight" data-reveal>
           <span class="highlight-ic" aria-hidden="true">
             <svg viewBox="0 0 24 24"><polyline points="9 8 5 12 9 16"/><polyline points="15 8 19 12 15 16"/></svg>
           </span>
-          <div><strong>Technologies de pointe</strong><span>IA, automatisation et frameworks modernes</span></div>
+          <div data-i18n="hl2"><strong>Technologies de pointe</strong><span>IA, automatisation et frameworks modernes</span></div>
         </div>
         <div class="highlight" data-reveal>
           <span class="highlight-ic" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M13 3L4 14h6l-1 7 9-11h-6z"/></svg>
           </span>
-          <div><strong>Performance mesurable</strong><span>Vitesse, référencement et expérience optimisés</span></div>
+          <div data-i18n="hl3"><strong>Performance mesurable</strong><span>Vitesse, référencement et expérience optimisés</span></div>
         </div>
         <div class="highlight" data-reveal>
           <span class="highlight-ic" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
           </span>
-          <div><strong>Accompagnement dédié</strong><span>Un partenaire unique, de la stratégie au suivi</span></div>
+          <div data-i18n="hl4"><strong>Accompagnement dédié</strong><span>Un partenaire unique, de la stratégie au suivi</span></div>
         </div>
       </div>
     </section>
@@ -284,51 +285,51 @@
 
     <section class="features section" id="services">
       <div class="container">
-        <p class="eyebrow center" data-reveal>Nos services</p>
-        <h2 class="section-title" data-reveal>Des solutions complètes pour vos projets digitaux</h2>
-        <p class="section-subtitle" data-reveal>De la conception au déploiement, une expertise complète au service de votre croissance.</p>
+        <p class="eyebrow center" data-reveal data-i18n="svc.eyebrow">Nos services</p>
+        <h2 class="section-title" data-reveal data-i18n="svc.title">Des solutions complètes pour vos projets digitaux</h2>
+        <p class="section-subtitle" data-reveal data-i18n="svc.sub">De la conception au déploiement, une expertise complète au service de votre croissance.</p>
         <div class="feature-grid">
           <article class="feature-card" data-reveal>
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="12" y1="18" x2="12" y2="21"/></svg>
             </div>
-            <h3>Sites web</h3>
-            <p>Sites vitrines, e-commerce et plateformes sur mesure — rapides, responsive et optimisés pour le référencement et la conversion.</p>
+            <h3 data-i18n="svc.web.t">Sites web</h3>
+            <p data-i18n="svc.web.d">Sites vitrines, e-commerce et plateformes sur mesure — rapides, responsive et optimisés pour le référencement et la conversion.</p>
           </article>
           <article class="feature-card" data-reveal>
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><line x1="10.5" y1="18.5" x2="13.5" y2="18.5"/></svg>
             </div>
-            <h3>Applications mobiles</h3>
-            <p>Des applications iOS &amp; Android fluides et fiables, conçues pour offrir une expérience utilisateur irréprochable.</p>
+            <h3 data-i18n="svc.app.t">Applications mobiles</h3>
+            <p data-i18n="svc.app.d">Des applications iOS &amp; Android fluides et fiables, conçues pour offrir une expérience utilisateur irréprochable.</p>
           </article>
           <article class="feature-card" data-reveal>
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
             </div>
-            <h3>Intelligence artificielle</h3>
-            <p>Chatbots, assistants et automatisations intelligentes qui optimisent vos processus et libèrent du temps à vos équipes.</p>
+            <h3 data-i18n="svc.ai.t">Intelligence artificielle</h3>
+            <p data-i18n="svc.ai.d">Chatbots, assistants et automatisations intelligentes qui optimisent vos processus et libèrent du temps à vos équipes.</p>
           </article>
           <article class="feature-card" data-reveal>
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2c.4-1 1.4-1.6 2.6-1.6 1.5 0 2.6.9 2.6 2.1 0 1.1-.8 1.7-2.1 2-1.3.3-2.1.9-2.1 2.1 0 1.2 1.1 2.1 2.6 2.1 1.2 0 2.2-.6 2.6-1.6M12 6v1.6M12 16.4V18"/></svg>
             </div>
-            <h3>Crypto &amp; blockchain</h3>
-            <p>Smart contracts, tokens, tableaux de bord et intégrations Web3 — des solutions sécurisées, auditées et fiables.</p>
+            <h3 data-i18n="svc.crypto.t">Crypto &amp; blockchain</h3>
+            <p data-i18n="svc.crypto.d">Smart contracts, tokens, tableaux de bord et intégrations Web3 — des solutions sécurisées, auditées et fiables.</p>
           </article>
           <article class="feature-card" data-reveal>
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="12" rx="3"/><circle cx="9" cy="13" r="1.3"/><circle cx="15" cy="13" r="1.3"/><path d="M12 4v3M8 19l-1 2M16 19l1 2"/></svg>
             </div>
-            <h3>Bots réseaux sociaux</h3>
-            <p>Bots Instagram, Telegram, Discord &amp; WhatsApp pour automatiser l'engagement, le support et la croissance de vos communautés.</p>
+            <h3 data-i18n="svc.bots.t">Bots réseaux sociaux</h3>
+            <p data-i18n="svc.bots.d">Bots Instagram, Telegram, Discord &amp; WhatsApp pour automatiser l'engagement, le support et la croissance de vos communautés.</p>
           </article>
           <article class="feature-card" data-reveal>
             <div class="feature-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2l2.5 5.5L20 8l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
             </div>
-            <h3>Solutions sur mesure</h3>
-            <p>Un besoin spécifique ? Nous concevons l'outil digital adapté, du cahier des charges jusqu'au déploiement et au suivi.</p>
+            <h3 data-i18n="svc.custom.t">Solutions sur mesure</h3>
+            <p data-i18n="svc.custom.d">Un besoin spécifique ? Nous concevons l'outil digital adapté, du cahier des charges jusqu'au déploiement et au suivi.</p>
           </article>
         </div>
       </div>
@@ -338,10 +339,10 @@
       <div class="container">
         <div class="section-head" data-reveal>
           <div>
-            <p class="eyebrow">Réalisations</p>
-            <h2 class="section-title section-title-left">Ils nous font confiance</h2>
+            <p class="eyebrow" data-i18n="rea.eyebrow">Réalisations</p>
+            <h2 class="section-title section-title-left" data-i18n="rea.title">Ils nous font confiance</h2>
           </div>
-          <a href="#contact" class="btn btn-secondary section-head-btn">Démarrer un projet</a>
+          <a href="#contact" class="btn btn-secondary section-head-btn" data-i18n="rea.btn">Démarrer un projet</a>
         </div>
         <div class="project-grid">
           <a class="project" href="https://www.crypto-nauts.com" target="_blank" rel="noopener" data-reveal>
@@ -351,7 +352,7 @@
             <div class="project-meta">
               <span class="project-kind">NFT · Crypto.com</span>
               <h3>Cryptonauts</h3>
-              <p>Collection NFT d'avatars d'astronautes, publiée sur la marketplace Crypto.com NFT.</p>
+              <p data-i18n="desc.crypto">Collection NFT d'avatars d'astronautes, publiée sur la marketplace Crypto.com NFT.</p>
               <span class="project-url">crypto-nauts.com&nbsp;↗</span>
             </div>
           </a>
@@ -360,9 +361,9 @@
               <img class="project-img cover" src="img/oryxia.jpg" alt="Oryxia Design — studio de gravure laser" loading="lazy" width="1200" height="750" />
             </div>
             <div class="project-meta">
-              <span class="project-kind">Site web · Gravure laser</span>
+              <span class="project-kind" data-i18n="kind.oryxia">Site web · Gravure laser</span>
               <h3>Oryxia Design</h3>
-              <p>Site vitrine premium pour Oryxia Design, studio de gravure laser et création sur mesure.</p>
+              <p data-i18n="desc.oryxia">Site vitrine premium pour Oryxia Design, studio de gravure laser et création sur mesure.</p>
               <span class="project-url">oryxia.be&nbsp;↗</span>
             </div>
           </a>
@@ -371,9 +372,9 @@
               <img class="project-img cover" src="img/betsfix.jpg" alt="Betsfix — paris sportifs" loading="lazy" width="1200" height="750" />
             </div>
             <div class="project-meta">
-              <span class="project-kind">API · Paris sportifs</span>
+              <span class="project-kind" data-i18n="kind.betsfix">API · Paris sportifs</span>
               <h3>Betsfix</h3>
-              <p>API de données et de pronostics pour les paris sportifs : cotes et statistiques.</p>
+              <p data-i18n="desc.betsfix">API de données et de pronostics pour les paris sportifs : cotes et statistiques.</p>
               <span class="project-url">api.betsfix.be&nbsp;↗</span>
             </div>
           </a>
@@ -382,14 +383,14 @@
               <img class="project-img cover" src="img/toukin.jpg" alt="Toukin Physiothérapie — Tolochenaz" loading="lazy" width="1200" height="750" />
             </div>
             <div class="project-meta">
-              <span class="project-kind">Site web · Physiothérapie</span>
+              <span class="project-kind" data-i18n="kind.toukin">Site web · Physiothérapie</span>
               <h3>Toukin Physiothérapie</h3>
-              <p>Site vitrine pour un cabinet de physiothérapie à Tolochenaz.</p>
+              <p data-i18n="desc.toukin">Site vitrine pour un cabinet de physiothérapie à Tolochenaz.</p>
               <span class="project-url">cronobots.github.io/TOUKIN&nbsp;↗</span>
             </div>
           </a>
         </div>
-        <p class="project-note" data-reveal>Quelques-uns de nos projets en ligne — cliquez pour les découvrir.</p>
+        <p class="project-note" data-reveal data-i18n="rea.note">Quelques-uns de nos projets en ligne — cliquez pour les découvrir.</p>
       </div>
     </section>
 
@@ -400,21 +401,21 @@
           <div class="about-card">
             <span class="about-avatar">V</span>
             <strong class="about-name">Vincent</strong>
-            <span class="about-role">Fondateur de Digital Concept</span>
+            <span class="about-role" data-i18n="about.role">Fondateur de Digital Concept</span>
             <ul class="about-creds">
-              <li>Diplômé en informatique</li>
-              <li>25+ ans dans le métier</li>
-              <li>Chaque projet sur mesure</li>
+              <li data-i18n="about.cred1">Diplômé en informatique</li>
+              <li data-i18n="about.cred2">25+ ans dans le métier</li>
+              <li data-i18n="about.cred3">Chaque projet sur mesure</li>
             </ul>
           </div>
           <div class="about-glow" aria-hidden="true"></div>
         </div>
         <div class="about-text" data-reveal>
-          <p class="eyebrow">À propos</p>
-          <h2 class="section-title about-title">Une passion, plus de 25 ans d'expertise</h2>
-          <p class="lead">Je m'appelle <strong>Vincent</strong>, fondateur de Digital Concept. Diplômé en informatique, j'évolue dans ce monde depuis plus de <strong>25 ans</strong> — j'ai vu naître le web, les applications mobiles, puis l'intelligence artificielle.</p>
-          <p>L'IA est un outil formidable, mais je concevais déjà ces solutions bien avant son arrivée. C'est précisément cette expérience qui fait la différence&nbsp;: savoir quand s'appuyer sur la technologie, et quand l'expertise humaine prime.</p>
-          <p>Passionné par mon métier, je traite chaque réalisation avec la même exigence&nbsp;: un travail <strong>méticuleux</strong>, soigné dans le moindre détail. Votre projet mérite mieux qu'un modèle générique — il mérite une création sur mesure.</p>
+          <p class="eyebrow" data-i18n="about.eyebrow">À propos</p>
+          <h2 class="section-title about-title" data-i18n="about.title">Une passion, plus de 25 ans d'expertise</h2>
+          <p class="lead" data-i18n="about.lead">Je m'appelle <strong>Vincent</strong>, fondateur de Digital Concept. Diplômé en informatique, j'évolue dans ce monde depuis plus de <strong>25 ans</strong> — j'ai vu naître le web, les applications mobiles, puis l'intelligence artificielle.</p>
+          <p data-i18n="about.p2">L'IA est un outil formidable, mais je concevais déjà ces solutions bien avant son arrivée. C'est précisément cette expérience qui fait la différence&nbsp;: savoir quand s'appuyer sur la technologie, et quand l'expertise humaine prime.</p>
+          <p data-i18n="about.p3">Passionné par mon métier, je traite chaque réalisation avec la même exigence&nbsp;: un travail <strong>méticuleux</strong>, soigné dans le moindre détail. Votre projet mérite mieux qu'un modèle générique — il mérite une création sur mesure.</p>
           <p class="about-sign">— Vincent · Digital Concept</p>
         </div>
       </div>
@@ -422,28 +423,28 @@
 
     <section class="how section" id="methode">
       <div class="container">
-        <p class="eyebrow center" data-reveal>Notre méthode</p>
-        <h2 class="section-title" data-reveal>Une méthode claire, de l'idée à la mise en ligne</h2>
+        <p class="eyebrow center" data-reveal data-i18n="met.eyebrow">Notre méthode</p>
+        <h2 class="section-title" data-reveal data-i18n="met.title">Une méthode claire, de l'idée à la mise en ligne</h2>
         <ol class="steps steps-4">
           <li class="step" data-reveal>
             <span class="step-num">01</span>
-            <h3>Échange &amp; cadrage</h3>
-            <p>Nous analysons votre besoin, définissons les objectifs et concevons la solution la plus adaptée.</p>
+            <h3 data-i18n="met.s1.t">Échange &amp; cadrage</h3>
+            <p data-i18n="met.s1.d">Nous analysons votre besoin, définissons les objectifs et concevons la solution la plus adaptée.</p>
           </li>
           <li class="step" data-reveal>
             <span class="step-num">02</span>
-            <h3>Design &amp; maquette</h3>
-            <p>Nous concevons une maquette claire et moderne, validée avec vous avant tout développement.</p>
+            <h3 data-i18n="met.s2.t">Design &amp; maquette</h3>
+            <p data-i18n="met.s2.d">Nous concevons une maquette claire et moderne, validée avec vous avant tout développement.</p>
           </li>
           <li class="step" data-reveal>
             <span class="step-num">03</span>
-            <h3>Développement</h3>
-            <p>Nous développons votre projet avec des technologies fiables, en toute transparence à chaque étape.</p>
+            <h3 data-i18n="met.s3.t">Développement</h3>
+            <p data-i18n="met.s3.d">Nous développons votre projet avec des technologies fiables, en toute transparence à chaque étape.</p>
           </li>
           <li class="step" data-reveal>
             <span class="step-num">04</span>
-            <h3>Lancement &amp; suivi</h3>
-            <p>Nous déployons, formons vos équipes si besoin, puis assurons le suivi et les évolutions.</p>
+            <h3 data-i18n="met.s4.t">Lancement &amp; suivi</h3>
+            <p data-i18n="met.s4.d">Nous déployons, formons vos équipes si besoin, puis assurons le suivi et les évolutions.</p>
           </li>
         </ol>
       </div>
@@ -451,14 +452,14 @@
 
     <section class="logos section" id="expertises">
       <div class="container">
-        <p class="eyebrow center" data-reveal>Nos expertises</p>
-        <h2 class="section-title" data-reveal>Les technologies que nous maîtrisons</h2>
+        <p class="eyebrow center" data-reveal data-i18n="exp.eyebrow">Nos expertises</p>
+        <h2 class="section-title" data-reveal data-i18n="exp.title">Les technologies que nous maîtrisons</h2>
         <div class="logo-grid">
           <div class="logo-cell" data-reveal>React</div>
           <div class="logo-cell" data-reveal>Next.js</div>
           <div class="logo-cell" data-reveal>Node.js</div>
           <div class="logo-cell" data-reveal>Flutter</div>
-          <div class="logo-cell" data-reveal>Python &amp; IA</div>
+          <div class="logo-cell" data-reveal data-i18n="exp.python">Python &amp; IA</div>
           <div class="logo-cell" data-reveal>Solidity / Web3</div>
           <div class="logo-cell" data-reveal>Stripe</div>
           <div class="logo-cell" data-reveal>Supabase</div>
@@ -470,32 +471,32 @@
 
     <section class="faq section" id="faq">
       <div class="container">
-        <p class="eyebrow center" data-reveal>Questions fréquentes</p>
-        <h2 class="section-title" data-reveal>Vos questions, nos réponses</h2>
+        <p class="eyebrow center" data-reveal data-i18n="faq.eyebrow">Questions fréquentes</p>
+        <h2 class="section-title" data-reveal data-i18n="faq.title">Vos questions, nos réponses</h2>
         <div class="faq-list">
           <details class="faq-item" data-reveal>
-            <summary>Combien coûte un projet&nbsp;?</summary>
-            <p>Chaque projet est unique. On établit un devis gratuit et transparent après un premier échange, en fonction de vos besoins et de votre budget. Aucune surprise.</p>
+            <summary data-i18n="faq.q1">Combien coûte un projet&nbsp;?</summary>
+            <p data-i18n="faq.a1">Chaque projet est unique. On établit un devis gratuit et transparent après un premier échange, en fonction de vos besoins et de votre budget. Aucune surprise.</p>
           </details>
           <details class="faq-item" data-reveal>
-            <summary>En combien de temps mon projet est-il livré&nbsp;?</summary>
-            <p>Un site vitrine prend généralement quelques jours à deux semaines. Une application ou une solution sur mesure, quelques semaines. On vous donne un planning clair dès le départ.</p>
+            <summary data-i18n="faq.q2">En combien de temps mon projet est-il livré&nbsp;?</summary>
+            <p data-i18n="faq.a2">Un site vitrine prend généralement quelques jours à deux semaines. Une application ou une solution sur mesure, quelques semaines. On vous donne un planning clair dès le départ.</p>
           </details>
           <details class="faq-item" data-reveal>
-            <summary>Je ne suis pas technique, est-ce un problème&nbsp;?</summary>
-            <p>Pas du tout&nbsp;: c'est tout l'intérêt. On vulgarise, on vous guide et on s'occupe de toute la technique. Vous gardez le contrôle, sans la complexité.</p>
+            <summary data-i18n="faq.q3">Je ne suis pas technique, est-ce un problème&nbsp;?</summary>
+            <p data-i18n="faq.a3">Pas du tout&nbsp;: c'est tout l'intérêt. On vulgarise, on vous guide et on s'occupe de toute la technique. Vous gardez le contrôle, sans la complexité.</p>
           </details>
           <details class="faq-item" data-reveal>
-            <summary>Faites-vous aussi le suivi après la mise en ligne&nbsp;?</summary>
-            <p>Oui. Hébergement, mises à jour, corrections et évolutions&nbsp;: on reste votre partenaire dans la durée, avec des formules de maintenance adaptées.</p>
+            <summary data-i18n="faq.q4">Faites-vous aussi le suivi après la mise en ligne&nbsp;?</summary>
+            <p data-i18n="faq.a4">Oui. Hébergement, mises à jour, corrections et évolutions&nbsp;: on reste votre partenaire dans la durée, avec des formules de maintenance adaptées.</p>
           </details>
           <details class="faq-item" data-reveal>
-            <summary>Travaillez-vous avec des clients hors de Belgique&nbsp;?</summary>
-            <p>Oui. On travaille à distance partout, avec des échanges réguliers en visio. La distance n'est pas un frein à un projet réussi.</p>
+            <summary data-i18n="faq.q5">Travaillez-vous avec des clients hors de Belgique&nbsp;?</summary>
+            <p data-i18n="faq.a5">Oui. On travaille à distance partout, avec des échanges réguliers en visio. La distance n'est pas un frein à un projet réussi.</p>
           </details>
           <details class="faq-item" data-reveal>
-            <summary>Pouvez-vous reprendre un projet existant&nbsp;?</summary>
-            <p>Bien sûr. On peut auditer, améliorer ou moderniser un site, une app ou un outil déjà en place, puis en assurer le suivi.</p>
+            <summary data-i18n="faq.q6">Pouvez-vous reprendre un projet existant&nbsp;?</summary>
+            <p data-i18n="faq.a6">Bien sûr. On peut auditer, améliorer ou moderniser un site, une app ou un outil déjà en place, puis en assurer le suivi.</p>
           </details>
         </div>
       </div>
@@ -506,23 +507,23 @@
        <div class="cta-band" data-reveal>
         <div class="cta-band-glow" aria-hidden="true"></div>
         <div class="cta-inner">
-        <h2>Prêt à donner vie à votre projet&nbsp;?</h2>
-        <p>Parlez-nous de votre projet&nbsp;: nous revenons vers vous sous 24&nbsp;h avec une proposition claire, gratuitement et sans engagement.</p>
+        <h2 data-i18n="cta.title">Prêt à donner vie à votre projet&nbsp;?</h2>
+        <p data-i18n="cta.p">Parlez-nous de votre projet&nbsp;: nous revenons vers vous sous 24&nbsp;h avec une proposition claire, gratuitement et sans engagement.</p>
         <form class="cta-form" id="contact-form" data-endpoint="" data-mailto="contact@digitalconcept.be" novalidate>
           <label class="sr-only" for="name">Nom / entreprise</label>
-          <input type="text" id="name" name="name" placeholder="Votre nom ou entreprise" autocomplete="organization" required />
+          <input type="text" id="name" name="name" placeholder="Votre nom ou entreprise" data-i18n-ph="form.name.ph" autocomplete="organization" required />
           <label class="sr-only" for="email">Adresse e-mail</label>
-          <input type="email" id="email" name="email" placeholder="vous@exemple.be" autocomplete="email" required />
+          <input type="email" id="email" name="email" placeholder="vous@exemple.be" data-i18n-ph="form.email.ph" autocomplete="email" required />
           <input type="hidden" name="_subject" value="Nouvelle demande de projet — Digital Concept" />
           <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;" />
-          <button type="submit" class="btn btn-primary" id="contact-submit">Demander un devis gratuit</button>
+          <button type="submit" class="btn btn-primary" id="contact-submit" data-i18n="form.submit">Demander un devis gratuit</button>
         </form>
-        <p class="form-rgpd">En soumettant ce formulaire, vous acceptez d'être recontacté par Digital Concept. Vos données restent confidentielles et ne sont jamais partagées.</p>
+        <p class="form-rgpd" data-i18n="form.rgpd">En soumettant ce formulaire, vous acceptez d'être recontacté par Digital Concept. Vos données restent confidentielles et ne sont jamais partagées.</p>
         <div class="form-check" id="form-check" aria-hidden="true">
           <svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" /><path d="M14 27l8 8 16-16" /></svg>
         </div>
         <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
-        <p class="cta-direct">
+        <p class="cta-direct" data-i18n="cta.direct">
           Ou contactez-nous directement&nbsp;:
           <a href="tel:+32460862146">0460 86 21 46</a>
           <span class="cta-sep" aria-hidden="true">·</span>
@@ -541,7 +542,7 @@
           <span class="brand-mark" aria-hidden="true">DC</span>
           <span class="brand-name">Digital<span class="brand-web">Concept</span></span>
         </a>
-        <p class="footer-tagline">Des solutions digitales sur mesure pour faire grandir votre entreprise.</p>
+        <p class="footer-tagline" data-i18n="foot.tagline">Des solutions digitales sur mesure pour faire grandir votre entreprise.</p>
         <div class="footer-social">
           <a href="#" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0zM.5 8h4V24h-4zM8 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.03 0 4.78 2.65 4.78 6.1V24h-4v-7c0-1.67-.03-3.8-2.32-3.8-2.32 0-2.68 1.8-2.68 3.68V24H8z"/></svg></a>
           <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
@@ -550,19 +551,19 @@
         </div>
       </div>
       <nav class="footer-col" aria-label="Services">
-        <h4>Services</h4>
-        <a href="#services">Sites web</a>
-        <a href="#services">Applications mobiles</a>
-        <a href="#services">Intelligence artificielle</a>
-        <a href="#services">Crypto &amp; blockchain</a>
-        <a href="#services">Bots réseaux sociaux</a>
+        <h4 data-i18n="foot.services.h">Services</h4>
+        <a href="#services" data-i18n="foot.web">Sites web</a>
+        <a href="#services" data-i18n="foot.app">Applications mobiles</a>
+        <a href="#services" data-i18n="foot.ai">Intelligence artificielle</a>
+        <a href="#services" data-i18n="foot.crypto">Crypto &amp; blockchain</a>
+        <a href="#services" data-i18n="foot.bots">Bots réseaux sociaux</a>
       </nav>
       <nav class="footer-col" aria-label="Entreprise">
-        <h4>Entreprise</h4>
-        <a href="#apropos">À propos</a>
-        <a href="#realisations">Réalisations</a>
-        <a href="#methode">Méthode</a>
-        <a href="#faq">Questions</a>
+        <h4 data-i18n="foot.company.h">Entreprise</h4>
+        <a href="#apropos" data-i18n="nav.about">À propos</a>
+        <a href="#realisations" data-i18n="nav.realisations">Réalisations</a>
+        <a href="#methode" data-i18n="nav.method">Méthode</a>
+        <a href="#faq" data-i18n="nav.faq">Questions</a>
       </nav>
       <div class="footer-col footer-contact">
         <h4>Contact</h4>
@@ -580,6 +581,7 @@
 
   <button class="to-top" id="to-top" aria-label="Revenir en haut" title="Revenir en haut">↑</button>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

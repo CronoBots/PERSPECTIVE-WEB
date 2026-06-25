@@ -2,6 +2,7 @@
   "use strict";
 
   const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let currentLang = "fr";
 
   // Année dynamique
   const yearEl = document.getElementById("year");
@@ -16,6 +17,35 @@
       root.setAttribute("data-theme", next);
       try { localStorage.setItem("theme", next); } catch (e) {}
     });
+  }
+
+  // Bilingue FR / EN (français par défaut, préférence mémorisée)
+  const I18N = window.I18N_EN || {};
+  const langToggle = document.getElementById("lang-toggle");
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.setAttribute("lang", lang);
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      if (el._fr == null) el._fr = el.innerHTML;
+      const en = I18N[el.getAttribute("data-i18n")];
+      el.innerHTML = lang === "en" && en != null ? en : el._fr;
+    });
+    document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
+      if (el._frPh == null) el._frPh = el.getAttribute("placeholder") || "";
+      const en = I18N[el.getAttribute("data-i18n-ph")];
+      el.setAttribute("placeholder", lang === "en" && en != null ? en : el._frPh);
+    });
+    if (langToggle) {
+      langToggle.textContent = lang === "en" ? "FR" : "EN";
+      langToggle.setAttribute("aria-label", lang === "en" ? "Repasser en français" : "Switch to English");
+    }
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+  let storedLang = "fr";
+  try { storedLang = localStorage.getItem("lang") || "fr"; } catch (e) {}
+  applyLang(storedLang === "en" ? "en" : "fr");
+  if (langToggle) {
+    langToggle.addEventListener("click", () => applyLang(currentLang === "en" ? "fr" : "en"));
   }
 
   // L'intro ne se rejoue pas pendant la session
@@ -161,6 +191,7 @@
     const endpoint = (form.dataset.endpoint || "").trim();
     const mailTo = form.dataset.mailto || "contact@digitalconcept.be";
     if (endpoint) form.setAttribute("action", endpoint); // repli sans JS
+    const t = (fr, en) => (currentLang === "en" ? en : fr);
 
     function showError(msg) {
       message.className = "form-message error";
@@ -177,7 +208,7 @@
     function setLoading(on) {
       if (!submitBtn) return;
       submitBtn.disabled = on;
-      submitBtn.textContent = on ? "Envoi…" : "Demander un devis gratuit";
+      submitBtn.textContent = on ? t("Envoi…", "Sending…") : t("Demander un devis gratuit", "Get a free quote");
     }
 
     form.addEventListener("submit", (event) => {
@@ -195,7 +226,7 @@
       if (!name) nameInput.classList.add("invalid");
       if (!emailValid) emailInput.classList.add("invalid");
       if (!name || !emailValid) {
-        showError("Merci d'indiquer votre nom et une adresse e-mail valide.");
+        showError(t("Merci d'indiquer votre nom et une adresse e-mail valide.", "Please enter your name and a valid email address."));
         return;
       }
 
@@ -210,25 +241,31 @@
           .then((res) => {
             setLoading(false);
             if (res.ok) {
-              showSuccess(`Merci ${name} ! Votre demande est envoyée, nous vous répondons à ${email} sous 24 h.`);
+              showSuccess(t(
+                `Merci ${name} ! Votre demande est envoyée, nous vous répondons à ${email} sous 24 h.`,
+                `Thanks ${name}! Your request has been sent — we'll reply to ${email} within 24 h.`
+              ));
               form.reset();
             } else {
-              showError("Oups, l'envoi a échoué. Réessayez ou écrivez-nous à " + mailTo + ".");
+              showError(t("Oups, l'envoi a échoué. Réessayez ou écrivez-nous à " + mailTo + ".",
+                          "Sorry, sending failed. Please retry or email us at " + mailTo + "."));
             }
           })
           .catch(() => {
             setLoading(false);
-            showError("Connexion impossible. Réessayez ou écrivez-nous à " + mailTo + ".");
+            showError(t("Connexion impossible. Réessayez ou écrivez-nous à " + mailTo + ".",
+                        "Connection failed. Please retry or email us at " + mailTo + "."));
           });
       } else {
         // Repli sans inscription : ouvre la messagerie du visiteur, pré-remplie
-        const subject = encodeURIComponent("Demande de devis — " + name);
-        const body = encodeURIComponent(
-          "Bonjour,\n\nJe souhaite discuter d'un projet.\n\nNom / entreprise : " +
-            name + "\nE-mail : " + email + "\n\nDescription du projet : \n\nMerci !"
-        );
+        const subject = encodeURIComponent(t("Demande de devis — ", "Quote request — ") + name);
+        const body = encodeURIComponent(t(
+          "Bonjour,\n\nJe souhaite discuter d'un projet.\n\nNom / entreprise : " + name + "\nE-mail : " + email + "\n\nDescription du projet : \n\nMerci !",
+          "Hello,\n\nI'd like to discuss a project.\n\nName / company: " + name + "\nEmail: " + email + "\n\nProject description: \n\nThank you!"
+        ));
         window.location.href = "mailto:" + mailTo + "?subject=" + subject + "&body=" + body;
-        showSuccess("Votre messagerie s'ouvre pour finaliser l'envoi. Merci " + name + " !");
+        showSuccess(t("Votre messagerie s'ouvre pour finaliser l'envoi. Merci " + name + " !",
+                      "Your email app is opening to complete the request. Thanks " + name + "!"));
         form.reset();
       }
     });
