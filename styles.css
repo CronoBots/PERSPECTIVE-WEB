@@ -1044,3 +1044,44 @@ a.project:hover .project-img { transform: scale(1.05); }
   padding: 4px 9px 4px 8px; border-radius: 999px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
 }
 .project-live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+/* ===================================================================
+   Section À propos (Vincent, fondateur)
+   =================================================================== */
+.about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 52px; align-items: center; }
+.about-visual { position: relative; display: flex; justify-content: center; }
+.about-glow {
+  position: absolute; inset: 8% 12%; z-index: 0; border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(56, 189, 248, 0.28), transparent 70%);
+  filter: blur(38px); animation: glowpulse 7s ease-in-out infinite;
+}
+.about-card {
+  position: relative; z-index: 1; width: 100%; max-width: 340px; text-align: center;
+  background: linear-gradient(180deg, rgba(56, 189, 248, 0.07), var(--bg-card));
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 36px 30px; box-shadow: var(--shadow);
+}
+.about-avatar {
+  width: 86px; height: 86px; margin: 0 auto 1rem; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700; font-size: 2.2rem; color: #06101f;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  box-shadow: 0 0 30px -6px rgba(56, 189, 248, 0.7);
+}
+.about-name { display: block; font-family: var(--font-display); font-size: 1.3rem; }
+.about-role { display: block; color: var(--text-muted); font-size: 0.86rem; margin-top: 0.15rem; }
+.about-creds { list-style: none; margin: 1.4rem 0 0; display: flex; flex-direction: column; gap: 0.6rem; text-align: left; }
+.about-creds li { position: relative; padding-left: 1.7rem; color: var(--text-muted); font-size: 0.92rem; }
+.about-creds li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+.about-title { text-align: left; max-width: none; margin: 0 0 0.6rem; }
+.about-text .lead { margin-bottom: 1.1rem; }
+.about-text p { color: var(--text-muted); }
+.about-text p.lead strong, .about-text p strong { color: var(--text); font-weight: 600; }
+.about-sign { margin-top: 1.4rem; font-family: var(--font-display); font-style: italic; color: var(--accent-ink) !important; }
+
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; gap: 36px; }
+  .about-title { text-align: center; }
+  .about-text { text-align: center; }
+  .about-creds { display: inline-flex; }
+}
