@@ -47,9 +47,20 @@
     }
     try { localStorage.setItem("lang", lang); } catch (e) {}
   }
-  let storedLang = "fr";
-  try { storedLang = localStorage.getItem("lang") || "fr"; } catch (e) {}
-  applyLang(storedLang);
+  // 1er passage : on détecte la langue du navigateur (FR/EN/NL, repli FR).
+  // Un choix manuel (mémorisé) reste toujours prioritaire.
+  function detectLang() {
+    const list = (navigator.languages && navigator.languages.length)
+      ? navigator.languages : [navigator.language || "fr"];
+    for (let i = 0; i < list.length; i++) {
+      const code = (list[i] || "").slice(0, 2).toLowerCase();
+      if (code === "nl" || code === "en" || code === "fr") return code;
+    }
+    return "fr";
+  }
+  let storedLang = null;
+  try { storedLang = localStorage.getItem("lang"); } catch (e) {}
+  applyLang(storedLang && LANGS.indexOf(storedLang) !== -1 ? storedLang : detectLang());
   if (langSwitch) {
     langSwitch.addEventListener("click", (e) => {
       const b = e.target.closest("button[data-lang]");
