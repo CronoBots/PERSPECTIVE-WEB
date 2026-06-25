@@ -1027,3 +1027,20 @@ a.project:hover .project-url { transform: translateX(3px); }
 .project-img.cover { object-fit: cover; object-position: center; }
 .project-img.contain { object-fit: contain; padding: 18px; }
 a.project:hover .project-img { transform: scale(1.05); }
+
+/* Grille de réalisations adaptable (3 ou 4 cartes) */
+.project-grid { grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); }
+
+/* Carte avec aperçu en direct (iframe) */
+.project-frame {
+  position: absolute; top: 0; left: 0; width: 1280px; height: 800px;
+  border: 0; transform-origin: 0 0; pointer-events: none; background: #0b1220;
+}
+.project-live {
+  position: absolute; top: 10px; left: 10px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.04em;
+  color: #eef3fb; background: rgba(7, 11, 20, 0.66); border: 1px solid var(--border);
+  padding: 4px 9px 4px 8px; border-radius: 999px; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.project-live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
