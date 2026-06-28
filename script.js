@@ -8,14 +8,27 @@
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  // Bascule de thème clair / sombre (mémorisée)
+  // Bascule de thème clair / sombre (mémorisée) — révélation circulaire (View Transitions)
   const themeToggle = document.getElementById("theme-toggle");
   if (themeToggle) {
-    themeToggle.addEventListener("click", () => {
+    const setTheme = (next) => {
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    };
+    themeToggle.addEventListener("click", (e) => {
       const root = document.documentElement;
       const next = root.getAttribute("data-theme") === "light" ? "dark" : "light";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
+      // Repli instantané : pas de support View Transitions ou mouvement réduit
+      if (prefersReduced || !document.startViewTransition) { setTheme(next); return; }
+      const x = e.clientX, y = e.clientY;
+      const end = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+      const vt = document.startViewTransition(() => setTheme(next));
+      vt.ready.then(() => {
+        root.animate(
+          { clipPath: ["circle(0px at " + x + "px " + y + "px)", "circle(" + end + "px at " + x + "px " + y + "px)"] },
+          { duration: 540, easing: "cubic-bezier(0.22, 1, 0.36, 1)", pseudoElement: "::view-transition-new(root)" }
+        );
+      });
     });
   }
 
@@ -320,15 +333,18 @@
     });
   }
 
-  // Inclinaison 3D des cartes (pointeur précis uniquement, hors reduced-motion)
+  // Inclinaison 3D des cartes + lueur qui suit le curseur (pointeur précis uniquement)
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   if (finePointer && !prefersReduced) {
     document.querySelectorAll(".feature-card, .step").forEach((card) => {
       card.addEventListener("pointermove", (e) => {
         const r = card.getBoundingClientRect();
-        const px = (e.clientX - r.left) / r.width - 0.5;
-        const py = (e.clientY - r.top) / r.height - 0.5;
+        const lx = e.clientX - r.left, ly = e.clientY - r.top;
+        const px = lx / r.width - 0.5;
+        const py = ly / r.height - 0.5;
         card.classList.add("is-tilting");
+        card.style.setProperty("--mx", lx + "px");
+        card.style.setProperty("--my", ly + "px");
         card.style.transform =
           "perspective(900px) rotateY(" + px * 5 + "deg) rotateX(" + -py * 5 + "deg) translateY(-6px)";
       });
@@ -336,6 +352,40 @@
         card.classList.remove("is-tilting");
         card.style.transform = "";
       });
+    });
+
+    // Projecteur du héros (suit la souris) + parallaxe douce du visuel
+    const hero = document.querySelector(".hero");
+    const heroSpot = document.getElementById("hero-spotlight");
+    const heroVisual = document.querySelector(".hero-visual");
+    if (hero) {
+      hero.addEventListener("pointermove", (e) => {
+        const r = hero.getBoundingClientRect();
+        const rx = (e.clientX - r.left) / r.width;
+        const ry = (e.clientY - r.top) / r.height;
+        if (heroSpot) {
+          heroSpot.style.setProperty("--mx", (rx * 100).toFixed(2) + "%");
+          heroSpot.style.setProperty("--my", (ry * 100).toFixed(2) + "%");
+        }
+        if (heroVisual) {
+          heroVisual.style.transform =
+            "translate(" + ((rx - 0.5) * 20).toFixed(1) + "px, " + ((ry - 0.5) * 20).toFixed(1) + "px)";
+        }
+      });
+      hero.addEventListener("pointerleave", () => {
+        if (heroVisual) heroVisual.style.transform = "";
+      });
+    }
+
+    // Boutons magnétiques (les CTA suivent légèrement le curseur)
+    document.querySelectorAll(".btn:not(.btn-ghost)").forEach((btn) => {
+      btn.addEventListener("pointermove", (e) => {
+        const r = btn.getBoundingClientRect();
+        const mx = e.clientX - r.left - r.width / 2;
+        const my = e.clientY - r.top - r.height / 2;
+        btn.style.transform = "translate(" + (mx * 0.22).toFixed(1) + "px, " + (my * 0.32).toFixed(1) + "px)";
+      });
+      btn.addEventListener("pointerleave", () => { btn.style.transform = ""; });
     });
   }
 

@@ -969,3 +969,46 @@ a.project:hover .project-thumb::after, a.project:focus-visible .project-thumb::a
 }
 .lang-menu button:hover { color: var(--text); background: var(--btn-secondary-bg); }
 .lang-menu button[aria-checked="true"] { color: #06101f; background: linear-gradient(120deg, var(--primary), var(--primary-2)); }
+
+/* ===================================================================
+   Vitrine — couche d'interactions premium
+   (curseur-lumière, grain, marquee fondu, transition de thème)
+   =================================================================== */
+
+/* Lueur qui suit le curseur sur les cartes (combinée au tilt 3D) */
+.feature-card > *, .step > * { position: relative; z-index: 1; }
+.feature-card::after, .step::after {
+  content: ""; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.16), transparent 60%);
+  opacity: 0; transition: opacity 0.35s var(--ease);
+}
+.feature-card:hover::after, .step:hover::after { opacity: 1; }
+:root[data-theme="light"] .feature-card::after,
+:root[data-theme="light"] .step::after {
+  background: radial-gradient(240px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.22), transparent 60%);
+}
+
+/* Texture grain film — très subtile, premium */
+.grain {
+  position: fixed; inset: 0; z-index: 2; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root[data-theme="light"] .grain { opacity: 0.035; mix-blend-mode: multiply; }
+
+/* Fondu des bords du bandeau défilant */
+.marquee {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+
+/* Bascule de thème : révélation circulaire (le nouveau thème s'étend depuis le bouton) */
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+  ::view-transition-old(root) { z-index: 1; }
+  ::view-transition-new(root) { z-index: 2147483646; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain { display: none; }
+  .feature-card::after, .step::after { display: none; }
+}
